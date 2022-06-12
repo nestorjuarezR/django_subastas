@@ -21,9 +21,10 @@ nav {
 
 
 nav ul li:hover {
-  background-color: #414040d0;
+  background-color: #7a7171d0;
   border-radius: 10px;
 }
+
 
 p {
   line-height: 2rem;

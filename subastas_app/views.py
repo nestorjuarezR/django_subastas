@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.contrib.auth.decorators import login_required
 from .models import Categorias
                              
 # Create your views here.
@@ -12,6 +13,12 @@ def index(request):
 def registro_usuario(request):
 
     return render(request, "./subastas_app/registro.html",)
+
+'''Funcion para la pgina ofertar (Obligatorio el login)'''
+# @login_required(login_url='login/')
+def ofertar(request):
+    return render(request,"./subastas_app/ofertar.html")
+
 
 '''Funcion que muestra la pagina con las categorias'''
 def categorias_subastas(request):
