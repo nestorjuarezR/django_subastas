@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="es">
 
@@ -6,8 +7,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Subasta</title>
 
+  <!-- Inicia bloque de archivos css -->
+  {% block css %}
   <!-- Favicon -->
-  <link rel="icon" href="./images/favicon.png">
+  <link rel="icon" href="{% static 'subastas_app/images/favicon.png'%} ">
 
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -21,48 +24,35 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
 
   <!-- CSS -->
-  <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection" />
+  <link href="{% static '/subastas_app/css/style.css'%} " type="text/css" rel="stylesheet" media="screen,projection" />
+
+  {% endblock %}
+  <!-- Termino de bloque de estilos css -->
 </head>
 
 <body>
-  <!-- Dropdown Structure -->
-  <ul id="dropdown1" class="dropdown-content">
-    <li><a href="#!">Perfil</a></li>
-    <li><a href="#!">Configuracion</a></li>
-    <li class="divider">Subastas</li>
-    <li><a href="#!">three</a></li>
-  </ul>
+  <!-- Inicio de bloque de estructura de barra de navegacion -->
+  {% block header %}
 
   <!-- Barra de navegacion -->
   <nav class="barra-navegacion" role="navigation">
     <div class="nav-wrapper ">
-      <a id="logo-container" href="#" class="brand-logo"><img src="./images/logo.png" alt="" class="logo"></a>
+      <a id="logo-container" href="#" class="brand-logo hide-on-small-only"><img
+          src="{% static '/subastas_app/images/logo.png'%}"" alt="" class=" logo"></a>
 
-      <!-- Menu responsivo -->
-      <a href="#"data-target="menu-responsive" class="sidenav-trigger">
-        <i class="material-icons">menu</i>
-      </a>
-      <!-- end menu responsivo -->
-      <ul class="right hide-on-med-and-down">
+      <ul class="right">
         <li><a href="products.html">Categorias</a></li>
         <li><a href="registro.html" class="">Registro</a></li>
+        <li><a href="registro.html" class="">Perfil</a></li>
         <li><a class="waves-effect waves-light btn" href="login.html">Login</a></li>
-        <li><a class="dropdown-trigger" href="" data-target="dropdown1">Perfil<i
-              class="material-icons right">arrow_drop_down</i></a></li>
-
-
-        <!-- Barra de navegacion para moviles  -->
-        <ul id="menu-responsive" class="sidenav">
-          <li><a href="products.html">Categorias</a></li>
-          <li><a href="registro.html">Registro</a></li>
-          <li><a href="login.html">Login</a></li>
-        </ul>
+      </ul>
     </div>
   </nav>
+  {% endblock %}
 
 
-
-
+  <!-- Inicio de bloque de contenido -->
+  {% block content %}
   <div id="index-banner" class="parallax-container ">
 
     <div class="section no-pad-bot">
@@ -95,7 +85,7 @@
       </div>
     </div>
     <div class="parallax">
-      <img src="./images/prism.png" alt="Unsplashed background img 1">
+      <img src="{% static 'subastas_app/images/prism.png'%}" alt="Unsplashed background img 1">
     </div>
   </div>
 
@@ -111,8 +101,10 @@
             <h5 class="center">Atractivos productos</h5>
 
             <p class="light center-align">
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Reprehenderit tempora corporis, neque reiciendis
-              voluptatem commodi, deserunt alias quis repellat quaerat eligendi ducimus illo facilis tenetur nam, rem
+              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Reprehenderit tempora corporis, neque
+              reiciendis
+              voluptatem commodi, deserunt alias quis repellat quaerat eligendi ducimus illo facilis tenetur nam,
+              rem
               debitis officia nesciunt.
             </p>
           </div>
@@ -124,8 +116,10 @@
             <h5 class="center">Amplia comunidad</h5>
 
             <p class="light center-align">
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Reprehenderit tempora corporis, neque reiciendis
-              voluptatem commodi, deserunt alias quis repellat quaerat eligendi ducimus illo facilis tenetur nam, rem
+              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Reprehenderit tempora corporis, neque
+              reiciendis
+              voluptatem commodi, deserunt alias quis repellat quaerat eligendi ducimus illo facilis tenetur nam,
+              rem
               debitis officia nesciunt.
             </p>
           </div>
@@ -137,8 +131,10 @@
             <h5 class="center">Plataforma robusta</h5>
 
             <p class="light center-align">
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Reprehenderit tempora corporis, neque reiciendis
-              voluptatem commodi, deserunt alias quis repellat quaerat eligendi ducimus illo facilis tenetur nam, rem
+              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Reprehenderit tempora corporis, neque
+              reiciendis
+              voluptatem commodi, deserunt alias quis repellat quaerat eligendi ducimus illo facilis tenetur nam,
+              rem
               debitis officia nesciunt.
             </p>
           </div>
@@ -150,7 +146,8 @@
 
 
   <div class="parallax-container valign-wrapper">
-    <div class="parallax"><img class="responsive-img" src="./images/dollars.jpg"" alt=" Unsplashed background img 2">
+    <div class="parallax"><img class="responsive-img" src="{% static  'subastas_app/images/dollars.jpg' %}"
+        alt=" Unsplashed background img 2">
     </div>
   </div>
 
@@ -161,12 +158,17 @@
         <div class="col s12 center">
           <h3><i class="mdi-content-send brown-text"></i></h3>
           <h4>Vive la experiencia</h4>
-          <p class="left-align light">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam scelerisque id
-            nunc nec volutpat. Etiam pellentesque tristique arcu, non consequat magna fermentum ac. Cras ut ultricies
+          <p class="left-align light">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam scelerisque
+            id
+            nunc nec volutpat. Etiam pellentesque tristique arcu, non consequat magna fermentum ac. Cras ut
+            ultricies
             eros. Maecenas eros justo, ullamcorper a sapien id, viverra ultrices eros. Morbi sem neque, posuere et
-            pretium eget, bibendum sollicitudin lacus. Aliquam eleifend sollicitudin diam, eu mattis nisl maximus sed.
-            Nulla imperdiet semper molestie. Morbi massa odio, condimentum sed ipsum ac, gravida ultrices erat. Nullam
-            eget dignissim mauris, non tristique erat. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices
+            pretium eget, bibendum sollicitudin lacus. Aliquam eleifend sollicitudin diam, eu mattis nisl maximus
+            sed.
+            Nulla imperdiet semper molestie. Morbi massa odio, condimentum sed ipsum ac, gravida ultrices erat.
+            Nullam
+            eget dignissim mauris, non tristique erat. Vestibulum ante ipsum primis in faucibus orci luctus et
+            ultrices
             posuere cubilia Curae;</p>
         </div>
       </div>
@@ -177,7 +179,8 @@
 
   <div class="parallax-container valign-wrapper">
     <div class="parallax">
-      <img class="responsive-img" src="./images/tarjeta-candado.jpg" alt="Unsplashed background img 3">
+      <img class="responsive-img" src="{% static 'subastas_app/images/tarjeta-candado.jpg'%}"
+        alt="Unsplashed background img 3">
     </div>
   </div>
 
@@ -188,18 +191,29 @@
         <div class="col s12 center">
           <h3><i class="mdi-content-send brown-text"></i></h3>
           <h4>Proteccion de datos e identidad</h4>
-          <p class="left-align light">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam scelerisque id
-            nunc nec volutpat. Etiam pellentesque tristique arcu, non consequat magna fermentum ac. Cras ut ultricies
+          <p class="left-align light">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam scelerisque
+            id
+            nunc nec volutpat. Etiam pellentesque tristique arcu, non consequat magna fermentum ac. Cras ut
+            ultricies
             eros. Maecenas eros justo, ullamcorper a sapien id, viverra ultrices eros. Morbi sem neque, posuere et
-            pretium eget, bibendum sollicitudin lacus. Aliquam eleifend sollicitudin diam, eu mattis nisl maximus sed.
-            Nulla imperdiet semper molestie. Morbi massa odio, condimentum sed ipsum ac, gravida ultrices erat. Nullam
-            eget dignissim mauris, non tristique erat. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices
+            pretium eget, bibendum sollicitudin lacus. Aliquam eleifend sollicitudin diam, eu mattis nisl maximus
+            sed.
+            Nulla imperdiet semper molestie. Morbi massa odio, condimentum sed ipsum ac, gravida ultrices erat.
+            Nullam
+            eget dignissim mauris, non tristique erat. Vestibulum ante ipsum primis in faucibus orci luctus et
+            ultrices
             posuere cubilia Curae;</p>
         </div>
       </div>
 
     </div>
   </div>
+
+  <!-- Fin de bloque de contenido -->
+  {% endblock %}
+
+  <!-- Inicio de bloque del Footer -->
+  {% block footer %}
   <footer class="page-footer grey darken-4" id="footer">
     <div class="container">
       <div class="row">
@@ -238,18 +252,19 @@
       </div>
     </div>
   </footer>
+  <!-- Fin del bloque de Footer -->
+  {% endblock %}
 
-
+  <!-- Inicio delo bloque de script -->
+  {% block java %}
+  <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <script src=" {% static 'subastas_app/js/materialize.js' %} "></script>
+  <script src="{% static 'subastas_app/js/init.js' %}"></script>
 
   <!-- <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
-
-  <script src="js/init.js"></script>
-  <script src="js/materialize.js"></script>
-  <script src="js/materialize.min.js"></script> -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-  <script src="/js/prueba.js"></script>
-
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script> -->
+  {% endblock %}
+  <!-- Fin del bloque de Script -->
 </body>
 
 </html>
