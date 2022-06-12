@@ -11,8 +11,7 @@ urlpatterns = [
    path('login/', auth_views.LoginView.as_view(
       template_name = "./subastas_app/login.html"),
       name= 'login'),
-   #log-out de usuario
    path('logout/', auth_views.LogoutView.as_view(
-        next_page ="/"),
-        name = 'logout')
+      next_page ="/"),
+      name = 'logout')
 ]

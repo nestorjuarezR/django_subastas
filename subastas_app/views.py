@@ -15,7 +15,7 @@ def registro_usuario(request):
     return render(request, "./subastas_app/registro.html",)
 
 '''Funcion para la pgina ofertar (Obligatorio el login)'''
-# @login_required(login_url='login/')
+@login_required(login_url='/login/')
 def ofertar(request):
     return render(request,"./subastas_app/ofertar.html")
 
