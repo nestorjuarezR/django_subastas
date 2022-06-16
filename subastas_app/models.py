@@ -1,14 +1,41 @@
+from pyexpat import model
 from django.db import models
+from django.contrib.auth.models import  AbstractUser
+
+
 
 # Create your models here.
 
 
 
 #Modelo de categorias
-class Categorias(models.Model):
+class Categoria(models.Model):
     nombre = models.CharField(max_length=30, null=False, blank=False)
     descripcion = models.CharField(max_length=250, null=False, blank=False)
-    category_image = models.ImageField(upload_to='media/' ,max_length=100, null=True)
+    category_image = models.ImageField(upload_to='categorias' ,max_length=100, null=True)
 
     def __str__(self):
-        return self.nombre
+        return f'{self.nombre}, {self.descripcion}'
+
+#Modificar-Extender el modelo Usur de Django
+
+class User(AbstractUser):
+    first_name = models.CharField(max_length=150, null=False, blank=False, unique=False)
+    last_name = models.CharField(max_length=150, unique=False)
+    GENERO = [
+    ("H", "Hombre"),
+    ("M", "Mujer"),
+    ("O", "Otro"),
+    ]
+    genere = models.CharField(max_length=1, choices=GENERO)
+    date_birth = models.DateField(null=True, blank=True)
+    username = models.CharField(unique=True, max_length=20, null=False, blank=False)
+    email = models.EmailField(unique=True, null = False, blank=False)
+    image = models.ImageField(upload_to='user_images', max_length = 100, null=True)
+    is_staff = models.BooleanField(default=False, blank=False, null=False)
+    is_superuser = models.BooleanField(default=False, blank=False, null=False)
+
+
+    def __sts__(self):
+        return f'{self.username}, {self.email}'
+

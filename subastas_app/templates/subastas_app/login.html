@@ -9,6 +9,7 @@
             <div class="l6 center-align">
                 <h4>Inicio de sesion</h4>
             </div>
+
             <div class="card-panel ">
                 <form action="" method="post">
                     {% csrf_token %}
@@ -29,6 +30,11 @@
                         <input type="hidden" name="next" value="/" />
                         {% endif %}
                     </div>
+                    {% if form.errors %}
+                    <div class="card-panel small red lighten-2 center-align">
+                        <p>Ingrese correctamente sus datos</p>
+                    </div>
+                    {% endif %}
                     <div class="center-align">
                         <button class="btn center-align" type="submit"><i
                                 class="material-icons right">send</i>Enviar</button>
