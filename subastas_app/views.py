@@ -19,6 +19,7 @@ def registro_usuario(request):
         nuevo_usuario.genere = request.POST['genere']
         nuevo_usuario.date_birth = request.POST['date_birth']
         nuevo_usuario.username = request.POST['username']
+        nuevo_usuario.password = request.POST['password']
         nuevo_usuario.email = request.POST['email']
         next = request.GET.get("next", "/")
         nuevo_usuario.save()
