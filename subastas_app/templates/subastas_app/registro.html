@@ -20,39 +20,55 @@
 
         </div>
         <div class="row card-panel">
+          <!-- Nombre  -->
           <div class="input-field col s12 m6 l6">
             <i class="material-icons prefix">account_circle</i>
-            <input type="text" placeholder="Ingrese su nombre" id="nombre" class="validate" name="first_name" value="{{ first_name }}" required>
+            <input type="text" placeholder="Ingrese su nombre" id="nombre" class="validate" name="first_name"
+              value="{{ first_name }}" required>
             <label for="nombre">Nombre</label>
           </div>
+          <!-- Primer apellido -->
           <div class="input-field col s12 m6 l6">
-            <input type="text" id="apellido" placeholder="Ingrese su primer apellido" class="validate" name="last_name" value=" {{ last_name }}" required>
+            <i class="material-icons prefix">account_circle</i>
+            <input type="text" id="apellido" placeholder="Ingrese su primer apellido" class="validate" name="last_name"
+              value=" {{ last_name }}" required>
             <label for="apellido">Apellido</label>
           </div>
+          <!-- Seleccion de genero -->
           <div class="input-field col s12 m6 l6">
-            <select class="browser-default" name="genere" >
+            <select class="browser-default" name="genere">
               <option value="" id="genero" disabled selected>Genero</option>
               <option value="H"> Masculino</option>
               <option value="M">Femenino</option>
               <option value="O">No binario</option>
             </select>
           </div>
+          <!-- Fecha de nacimiento en formato YYYY-MM-DD -->
           <div class="input-field col s12 m6 l6">
             <i class="material-icons prefix">insert_invitation</i>
-            <input id="dtp" class="validate" type="text" name="date_birth">
-            <label for="dtp"> Fecha de nacimiento YYYY-MM-DD</label>
+            <input id="dtp" class="datepicker " type="text" name="date_birth" required>
+            <label for="dtp"> Fecha de nacimiento</label>
           </div>
+          <!-- Usuario -->
           <div class="input-field col s12 m6 l6">
             <i class="material-icons prefix">tag_faces</i>
             <input type="text" id="usuario" class="validate" name="username" value="{{ username }}" required>
-            <label for="usuario">Nombre de Usuario</label>
+            <label for="usuario">Usuario</label>
           </div>
+          <!-- Contraseña -->
+          <div class="input-field col s12 m6 l6">
+            <i class="material-icons prefix">tag_faces</i>
+            <input type="password" id="password" class="validate" name="password" value="{{ password }}" required>
+            <label for="password">Password</label>
+          </div>
+          <!-- Correo electronico -->
           <div class="input-field col s12 m6 l6">
             <i class="material-icons prefix">email</i>
             <input type="email" id="email" class="validate" name="email" value="{{ email }}" required>
             <label for="email">Correo electronico</label>
           </div>
           <div class="col s12 m12 l12 center-align">
+            <!-- Terminos y condiciones -->
             <p>
               <label>
                 <input type="checkbox" class="validate" required />
@@ -60,11 +76,10 @@
               </label>
             </p>
           </div>
+          <!-- Boton de enviar -->
           <div class="center-align col s12 m12 l12">
             <button class="btn" type="submit"><i class="material-icons right ">send</i> Enviar</button>
           </div>
-
-
         </div>
       </form>
     </div>
