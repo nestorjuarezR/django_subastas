@@ -1,6 +1,8 @@
+from email import contentmanager
+from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
-from .models import Categoria, User
+from .models import Categoria, User, Articulo
                              
 # Create your views here.
 
@@ -42,4 +44,12 @@ def categorias_subastas(request):
     return render(request, "./subastas_app/categorias.html",
     {
         "categorias": categorias_all
+    })
+
+'''Funcion que muestra la pagina de articulos de una categoria'''
+
+def articulos_categoria(request):
+    productos_all = Articulo.objects.all()
+    return render(request, "./subastas_app/articulos.html",{
+        "articulos": productos_all
     })

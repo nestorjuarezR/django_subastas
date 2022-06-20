@@ -19,6 +19,7 @@ class Categoria(models.Model):
 
 #Modificar-Extender el modelo Usur de Django
 
+#Modelo Usuario
 class User(AbstractUser):
     first_name = models.CharField(max_length=150, null=False, blank=False, unique=False)
     last_name = models.CharField(max_length=150, unique=False)
@@ -39,3 +40,15 @@ class User(AbstractUser):
     def __sts__(self):
         return f'{self.username}, {self.email}'
 
+
+#Modelo de Articulo
+
+class Articulo(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    categoria = models.ForeignKey(Categoria, on_delete=models.CASCADE)
+    nombre =models.CharField( max_length=80, null=False, blank=False)
+    descripcion = models.CharField(max_length=240, null=False, blank=False)
+    precio_minimo = models.IntegerField(null=True, blank=True)
+
+    def __str__(self):
+        return f'{self.nombre}, {self.descripcion}'
