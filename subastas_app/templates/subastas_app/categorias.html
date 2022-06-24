@@ -9,7 +9,7 @@
             <!-- Inicio del ciclo for para mostar las categorias -->
             {% for info in categorias %}
             <div class="col s12 m6 l4">
-                <div class="card medium">
+                <div class="card medium hoverable">
                     <div class="card-image">
                         <img class="responsive-img" id="card-image" src="{{ info.category_image.url }}"">
                    
@@ -19,7 +19,7 @@
                         <p>{{ info.descripcion }}</p>
                     </div>
                     <div class="card-action">
-                        <a href="articulos/">Entrar</a>
+                        <a href="{{ info.url_name }}">Entrar</a>
                     </div>
                 </div>
             </div>

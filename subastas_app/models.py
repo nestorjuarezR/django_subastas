@@ -1,4 +1,5 @@
 from pyexpat import model
+from tkinter import image_names
 from django.db import models
 from django.contrib.auth.models import  AbstractUser
 
@@ -13,9 +14,10 @@ class Categoria(models.Model):
     nombre = models.CharField(max_length=30, null=False, blank=False)
     descripcion = models.CharField(max_length=250, null=False, blank=False)
     category_image = models.ImageField(upload_to='categorias' ,max_length=100, null=True)
+    url_name = models.CharField(max_length=30, null=False, blank=False)
 
     def __str__(self):
-        return f'{self.nombre}, {self.descripcion}'
+        return f'{self.nombre}, {self.descripcion}, {self.url_name}'
 
 #Modificar-Extender el modelo Usur de Django
 
@@ -49,6 +51,7 @@ class Articulo(models.Model):
     nombre =models.CharField( max_length=80, null=False, blank=False)
     descripcion = models.CharField(max_length=240, null=False, blank=False)
     precio_minimo = models.IntegerField(null=True, blank=True)
+    imagen =  models.ImageField(upload_to='articulos_images', max_length = 250, null=True)
 
     def __str__(self):
         return f'{self.nombre}, {self.descripcion}'

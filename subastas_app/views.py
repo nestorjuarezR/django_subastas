@@ -46,6 +46,7 @@ def categorias_subastas(request):
         "categorias": categorias_all
     })
 
+
 '''Funcion que muestra la pagina de articulos de una categoria'''
 
 def articulos_categoria(request):
