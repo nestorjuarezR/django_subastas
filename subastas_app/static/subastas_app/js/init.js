@@ -19,6 +19,7 @@
     indicators: false,
     height: 500
   });
+  $('.fixed-action-btn').floatingActionButton();
   }); // end of document ready
 })(jQuery); // end of jQuery name space
 
