@@ -1,0 +1,11 @@
+{% extends 'subastas_app/index.html' %}
+
+<body>
+    {% block content %}
+    
+    {% for item  in user_info %}
+        <p>{{ item.first_name }}</p>
+    {% endfor %}
+        
+    {% endblock %}
+</body>

@@ -79,3 +79,10 @@ def agregar_articulo(request):
       
         return redirect(next)
     return render(request, "./subastas_app/agregar_articulo.html")
+
+
+def perfil_usuario(request):
+    info_user = User.objects.all()
+    return render(request, "./subastas_app/user_profile.html",{
+        'user_info': info_user
+    })
