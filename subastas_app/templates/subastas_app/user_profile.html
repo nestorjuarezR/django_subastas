@@ -2,10 +2,27 @@
 
 <body>
     {% block content %}
+
+    <div class="section container">
+        <div class="row card-panel">
+            <div class="col l5">
+                <p>Seccion para herramientas</p>
+            </div>
+            {% for item  in user_info %}
+            <div class="col l7 center-align">
+                <p>Seccion de informacion</p>
+                <img class="responsive-img"  src="{{ item.user.image.url }}" alt="">
+                <p>{{ item.first_name }}</p>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+
     
-    {% for item  in user_info %}
+    <!-- {% for item  in user_info %}
         <p>{{ item.first_name }}</p>
-    {% endfor %}
+    {% endfor %} -->
         
     {% endblock %}
 </body>
