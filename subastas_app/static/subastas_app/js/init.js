@@ -20,6 +20,9 @@
     height: 500
   });
   $('.fixed-action-btn').floatingActionButton();
+  // $('#descripcion').val('');
+  // M.textareaAutoResize($('#descripcion'));
+  $('input#input_text, textarea#descripcion').characterCounter();
   }); // end of document ready
 })(jQuery); // end of jQuery name space
 

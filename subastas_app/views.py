@@ -1,4 +1,3 @@
-from email import contentmanager
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
@@ -54,3 +53,29 @@ def articulos_categoria(request):
     return render(request, "./subastas_app/articulos.html",{
         "articulos": productos_all
     })
+
+'''Funcion para que el usuario agrege articulos de una categoria'''
+def agregar_articulo(request):
+    if request.method == "POST":
+        nuevo_articulo = Articulo()
+        user = request.user
+        nombre = request.POST['nombre']
+        categoria = request.POST['categoria']
+        descripcion = request.POST['descripcion']
+        precio_minimo = request.POST['precio_minimo']
+        imagen = request.FILES['imagen']
+
+        nuevo_articulo = Articulo(
+            user = user,
+            nombre = nombre,
+            descripcion = descripcion,
+            precio_minimo = precio_minimo,
+            categoria = categoria
+            # imagen = imagen
+        )
+        nuevo_articulo.save()
+        return redirect("categorias/reloj/")
+        
+      
+        return redirect(next)
+    return render(request, "./subastas_app/agregar_articulo.html")
