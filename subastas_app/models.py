@@ -9,7 +9,7 @@ from django.contrib.auth.models import  AbstractUser
 
 #Modelo de categorias
 class Categoria(models.Model):
-    nombre = models.CharField(max_length=30, null=False, blank=False)
+    nombre = models.CharField(max_length=30, null=False, blank=False, primary_key=True)
     descripcion = models.CharField(max_length=250, null=False, blank=False)
     category_image = models.ImageField(upload_to='categorias' ,max_length=100, null=True)
     url_name = models.CharField(max_length=30, null=False, blank=False)

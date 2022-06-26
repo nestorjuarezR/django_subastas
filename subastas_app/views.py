@@ -39,7 +39,7 @@ def ofertar(request):
 
 '''Funcion que muestra la pagina con las categorias'''
 def categorias_subastas(request):
-    categorias_all = Categoria.objects.all()   #Consulta y selecciona todas las categorias registras
+    categorias_all = Categoria.objects.all()                                          #Consulta y selecciona todas las categorias registras
     return render(request, "./subastas_app/categorias.html",
     {
         "categorias": categorias_all
@@ -48,10 +48,11 @@ def categorias_subastas(request):
 
 '''Funcion que muestra la pagina de articulos de una categoria'''
 
-def articulos_categoria(request):
-    productos_all = Articulo.objects.all()
-    return render(request, "./subastas_app/articulos.html",{
-        "articulos": productos_all
+def articulos_categoria(request, categoria_nombre):
+    categoria_articulo = Articulo.objects.filter(categoria = categoria_nombre)
+    return render(request, "./subastas_app/articulos.html",
+    {
+        'categoria_articulo': categoria_articulo
     })
 
 '''Funcion para que el usuario agrege articulos de una categoria'''
@@ -75,9 +76,7 @@ def agregar_articulo(request):
         )
         nuevo_articulo.save()
         return redirect("categorias/reloj/")
-        
-      
-        return redirect(next)
+
     return render(request, "./subastas_app/agregar_articulo.html")
 
 
