@@ -9,6 +9,7 @@ urlpatterns = [
    path("perfil/", views.perfil_usuario, name="perfil"),                                                            #Pagina que mesutra la informacion del perfil                
    path("categorias/<str:categoria_nombre>/", views.articulos_categoria),                        #Pagina de la categoria articulos
    path("ofertar/", views.ofertar, name="ofertar"),
+   path("categorias/<str:categoria_nombre>/<int:id_articulo", views.subasta_articulo),
    path("categorias/reloj/agregar_articulo/", views.agregar_articulo, name="agregar"),
 
 

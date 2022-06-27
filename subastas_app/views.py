@@ -22,8 +22,10 @@ def registro_usuario(request):
         nuevo_usuario.username = request.POST['username']
         nuevo_usuario.password = request.POST['password']
         nuevo_usuario.email = request.POST['email']
-        next = request.GET.get("next", "/")
+        nuevo_usuario.is_active = True
         nuevo_usuario.save()
+        next = request.GET.get("next", "/")
+        
       
         return redirect(next)
 
@@ -54,6 +56,9 @@ def articulos_categoria(request, categoria_nombre):
     {
         'categoria_articulo': categoria_articulo
     })
+
+def subasta_articulo(request,id_articulo):
+    pass
 
 '''Funcion para que el usuario agrege articulos de una categoria'''
 def agregar_articulo(request):
