@@ -12,30 +12,39 @@
                         <div class="col l5">
                             <!-- Carousel de fotos del articulo -->
                             {% for item in articulo %}
-                            <img class="responsive-img"  src="{{ info.imagen.url }}">
+                            <img class="responsive-img" src="{{ info.imagen.url }}">
                             {% endfor %}
                         </div>
                     </div>
                     <div class="col l6 offset-l6 right">
                         <div class="card-content left">
                             {% for item  in articulo %}
-                            <div class="card-panel  center-align teal lighten-1 "> Precio de apertura:${{item.precio_minimo }}</div>
+                            <div class="card-panel  center-align teal lighten-1 "> Precio de
+                                apertura:${{item.precio_minimo }}</div>
                             {% endfor %}
-                            
-                            {% for info in info_subasta %}
-                            <div class="card-panel center-align amber lighten-1"> Ultima puja:${{info.precio_ganador }}</div>
+
+                            {% for info in articulo_subasta %}
+                            <div class="card-panel center-align amber lighten-1"> Ultima puja:${{info.precio_ganador }}
+                            </div>
                             {% endfor %}
                             <div class="row valign-wrapper">
                                 <div class="col l6">
                                     <h5>Ofertar </h5>
                                 </div>
-                                <div class="input-field col l6">
-                                    <i class=" tiny material-icons prefix">attach_money</i>
-                                    <input type="text" class="validate" id="puja">
-                                </div>
-                                <a onclick="M.toast({html:  puja.value, classes: 'rounded'})" class="btn">Push!</a>
+                                <form action="" method="post">
+                                    {% csrf_token %}
+                                    <div class="input-field col l6">
+                                        <i class=" tiny material-icons prefix ">attach_money</i>
+                                        <input type="text" class="validate" id="puja" name="precio_ganador"
+                                            value="{{ precio_ganador }}">
+                                    </div>
+                                    <button onclick="M.toast({html:  puja.value, classes: 'rounded'})" class="btn"
+                                        type="submit">Push!</button>
+                                </form>
                             </div>
-                                
+
+
+
 
 
                         </div>

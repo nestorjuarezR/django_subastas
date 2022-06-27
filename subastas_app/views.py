@@ -59,12 +59,25 @@ def articulos_categoria(request, categoria_nombre):
 
 '''Funcion para mostrar la pagina de la ubasta del articulo'''
 def subasta_articulo(request,articulo_id):
+    #Obtengo los objetos para el listado de informacion
     articulo_subasta = Subasta.objects.filter(articulo_id = articulo_id)
     articulo = Articulo.objects.filter(id=articulo_id)
+
+    #Actualizacion del valor de ultima puja en html
+    if request.method == "POST":
+        ultima_puja = request.POST['precio_ganador']
+        #usuario = request.user
+        print(ultima_puja)
+        articulo_subasta.precio_ganador = ultima_puja
+        articulo_subasta.update()
+        
+        return redirect(request.META['HTTP_REFERER'])
+
+
     return render(request,"./subastas_app/subasta_articulo.html",
     {
-        'info_subasta' : articulo_subasta,
-        'articulo' : articulo
+        'articulo_subasta' : articulo_subasta,
+        'articulo' : articulo,
     })
 
 '''Funcion para que el usuario agrege articulos de una categoria'''
