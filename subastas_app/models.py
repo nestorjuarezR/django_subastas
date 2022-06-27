@@ -33,7 +33,7 @@ class User(AbstractUser):
     username = models.CharField(unique=True, max_length=20, null=False, blank=False)
     password = models.CharField(max_length=12, null=False, blank=False)
     email = models.EmailField(unique=True, null = False, blank=False)
-    image = models.ImageField(upload_to='user_images', max_length = 100, null=True, blank=True, default='anonimo.svg')
+    image = models.ImageField(upload_to='user_images', max_length = 100, null=True, blank=True, default='./user_images/anonimo.svg')
     is_staff = models.BooleanField(default=False, blank=False, null=False)
     is_superuser = models.BooleanField(default=False, blank=False, null=False)
 
@@ -58,7 +58,7 @@ class Articulo(models.Model):
 class Subasta(models.Model):
     articulo = models.OneToOneField(Articulo, on_delete=models.CASCADE)
     user_ganador = models.OneToOneField(User, on_delete=models.CASCADE)
-    precio_ganador = models.IntegerField(null=False, blank=False)
+    precio_ganador = models.IntegerField(null=True, blank=True)
 
     def __str__(self):
         return f'Usuario ganador: {self.user_ganador}, Precio ganador: {self.precio_ganador}'

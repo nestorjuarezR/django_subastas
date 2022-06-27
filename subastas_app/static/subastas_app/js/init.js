@@ -19,6 +19,12 @@
     indicators: false,
     height: 500
   });
+  $(document).ready(function(){
+    $('.materialboxed').materialbox();
+  });
+  $(document).ready(function(){
+    $('.carousel').carousel();
+  });
   $('.fixed-action-btn').floatingActionButton();
   // $('#descripcion').val('');
   // M.textareaAutoResize($('#descripcion'));
