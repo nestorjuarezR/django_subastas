@@ -27,7 +27,7 @@ def registro_usuario(request):
         nuevo_usuario.is_active = True
         nuevo_usuario.set_password(password)
         nuevo_usuario.save()
-        next = request.GET.get("next", "/")
+        next = request.GET.get("next", "/login/")
         
       
         return redirect(next)

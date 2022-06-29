@@ -11,11 +11,11 @@ from django.contrib.auth.models import  AbstractUser
 class Categoria(models.Model):
     nombre = models.CharField(max_length=30, null=False, blank=False, primary_key=True)
     descripcion = models.CharField(max_length=250, null=False, blank=False)
-    category_image = models.ImageField(upload_to='categorias' ,max_length=100, null=True)
+    category_image = models.ImageField(upload_to='categorias' , null=True)
     url_name = models.CharField(max_length=30, null=False, blank=False)
 
     def __str__(self):
-        return f'{self.nombre}, {self.descripcion}, {self.url_name}'
+        return f'{self.nombre}, {self.descripcion}'
 
 #Modificar-Extender el modelo Usur de Django
 
@@ -33,7 +33,7 @@ class User(AbstractUser):
     username = models.CharField(unique=True, max_length=20, null=False, blank=False)
     password = models.CharField(max_length=12, null=False, blank=False)
     email = models.EmailField(unique=True, null = False, blank=False)
-    image = models.ImageField(upload_to='user_images', max_length = 100, null=True, blank=True, default='./user_images/anonimo.svg')
+    image = models.ImageField(upload_to='user_images', null=True, blank=True, default='./user_images/anonimo.svg')
     is_staff = models.BooleanField(default=False, blank=False, null=False)
     is_superuser = models.BooleanField(default=False, blank=False, null=False)
     is_active = models.BooleanField(default=True)
@@ -51,7 +51,7 @@ class Articulo(models.Model):
     nombre =models.CharField( max_length=80, null=False, blank=False)
     descripcion = models.CharField(max_length=240, null=False, blank=False)
     precio_minimo = models.IntegerField(null=True, blank=True)
-    imagen =  models.ImageField(upload_to='articulos_images', max_length = 250, null=True)
+    imagen =  models.ImageField(upload_to='articulos_images', null=True)
 
     def __str__(self):
         return f'{self.nombre}, {self.descripcion}'
