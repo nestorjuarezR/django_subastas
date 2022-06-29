@@ -36,6 +36,7 @@ class User(AbstractUser):
     image = models.ImageField(upload_to='user_images', max_length = 100, null=True, blank=True, default='./user_images/anonimo.svg')
     is_staff = models.BooleanField(default=False, blank=False, null=False)
     is_superuser = models.BooleanField(default=False, blank=False, null=False)
+    is_active = models.BooleanField(default=True)
 
 
     def __sts__(self):
