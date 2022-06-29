@@ -53,15 +53,18 @@ def categorias_subastas(request):
 
 '''Funcion que muestra la pagina de articulos de una categoria'''
 def articulos_categoria(request, categoria_nombre):
-    categoria_articulo = Articulo.objects.filter(nombre = categoria_nombre)
-    print(articulos_categoria)
+    categoria = Categoria.objects.filter(nombre=categoria_nombre)
+    articulos = Articulo.objects.all()
+    #categorias = Categoria.objects.all()    
+    print(articulos)
     return render(request, "./subastas_app/articulos.html",
     {
-        'categoria_articulo': categoria_articulo
+        'articulos': articulos,
+        'categoria': categoria
     })
 
 
-'''Funcion para mostrar la pagina de la ubasta del articulo'''
+'''Funcion para mostrar la pagina de la subasta del articulo'''
 def subasta_articulo(request,articulo_id):
     #Obtengo los objetos para el listado de informacion
     articulo_subasta = Subasta.objects.filter(articulo_id = articulo_id)

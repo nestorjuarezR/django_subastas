@@ -8,40 +8,31 @@
         <div class="row">
             <!-- Inicio del ciclo for para mostar las categorias -->
             <div class="divider"></div>
-            {% for info in categoria_articulo %}
-            <div class="col s12 m6 l4">
-                <div class="card medium">
-                    <div class="card-image">
-                        <img class="responsive-img" id="card-image" src="{{ info.imagen.url }}"">
-                    </div>
-                    <div class=" card-content">
-                        <span class=" card-title">{{info.nombre}}</span>
-                        <p>{{ info.descripcion }}</p>
-                    </div>
-                    <div class="card-action">
-                        <a href="/subasta/{{ info.id }}">Entrar</a>
-                    </div>
-                </div>
-            </div>
+
+            
+            {% for categoria_info in categoria %}
+                
+                
+                {% for articulo_info in  articulos%}
+                        
+                        {% if articulo_info.categoria_id == categoria_info.id %}
+                            <div class="col s12 m6 l4">
+                                <div class="card medium">
+                                    <div class="card-image">
+                                        <img class="responsive-img" id="card-image" src="{{ articulo_info.imagen.url }}">
+                                    </div>
+                                    <div class=" card-content">
+                                        <span class=" card-title">{{ articulo_info.nombre }}</span>
+                                        <p>{{ articulo_info.descripcion }}</p>
+                                    </div>
+                                    <div class="card-action">
+                                        <a href="/subasta/{{ articulo_info.id }}">Entrar</a>
+                                    </div>
+                                </div>
+                            </div> 
+                        {% endif %}
+                {% endfor %}
             {% endfor %}
-
-
-            <!-- {% for info in articulos %}
-            <div class="col s12 m6 l4">
-                <div class="card medium">
-                    <div class="card-image">
-                        <img class="responsive-img" id="card-image" src="{{ info.imagen.url }}"">
-                    </div>
-                    <div class=" card-content">
-                        <span class=" card-title">{{info.nombre}}</span>
-                        <p>{{ info.descripcion }}</p>
-                    </div>
-                    <div class="card-action">
-                        <a href="#">Entrar</a>
-                    </div>
-                </div>
-            </div>
-            {% endfor %} -->
         </div>
     </div>
 
