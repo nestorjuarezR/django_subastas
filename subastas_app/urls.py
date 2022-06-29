@@ -10,7 +10,8 @@ urlpatterns = [
    path("categorias/<str:categoria_nombre>/", views.articulos_categoria),                        #Pagina de la categoria articulos
    path("ofertar/", views.ofertar, name="ofertar"),
    path("subasta/<int:articulo_id>", views.subasta_articulo),
-   path("categorias/reloj/agregar_articulo/", views.agregar_articulo, name="agregar"),
+   path('registar_articulo/',views.agregar_articulo , name='agregar'),
+   #path("categorias/reloj/agregar_articulo/", views.agregar_articulo, name="agregar"),
 
 
    #login de usuario

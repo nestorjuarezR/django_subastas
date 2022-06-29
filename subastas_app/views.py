@@ -44,7 +44,7 @@ def ofertar(request):
 
 '''Funcion que muestra la pagina con las categorias'''
 def categorias_subastas(request):
-    categorias_all = Categoria.objects.all()                                          #Consulta y selecciona todas las categorias registras
+    categorias_all = Categoria.objects.all()                                    #Consulta y selecciona todas las categorias registras
     return render(request, "./subastas_app/categorias.html",
     {
         "categorias": categorias_all
@@ -52,13 +52,14 @@ def categorias_subastas(request):
 
 
 '''Funcion que muestra la pagina de articulos de una categoria'''
-
 def articulos_categoria(request, categoria_nombre):
-    categoria_articulo = Articulo.objects.filter(categoria = categoria_nombre)
+    categoria_articulo = Articulo.objects.filter(nombre = categoria_nombre)
+    print(articulos_categoria)
     return render(request, "./subastas_app/articulos.html",
     {
         'categoria_articulo': categoria_articulo
     })
+
 
 '''Funcion para mostrar la pagina de la ubasta del articulo'''
 def subasta_articulo(request,articulo_id):
@@ -83,29 +84,35 @@ def subasta_articulo(request,articulo_id):
         'articulo' : articulo,
     })
 
+
 '''Funcion para que el usuario agrege articulos de una categoria'''
 def agregar_articulo(request):
+    #obtengo el nombre de las categorias
+    categorias_all = Categoria.objects.all()     
+
     if request.method == "POST":
         nuevo_articulo = Articulo()
-        user = request.user
+        user = request.user.id
         nombre = request.POST['nombre']
-        categoria = request.POST['categoria']
+        categoria_id = request.POST['categoria_id']
         descripcion = request.POST['descripcion']
         precio_minimo = request.POST['precio_minimo']
         imagen = request.FILES['imagen']
 
         nuevo_articulo = Articulo(
-            user = user,
+            user_id = user,
             nombre = nombre,
             descripcion = descripcion,
             precio_minimo = precio_minimo,
-            categoria = categoria
-            # imagen = imagen
+            categoria_id = categoria_id,
+            imagen = imagen
         )
         nuevo_articulo.save()
-        return redirect("categorias/reloj/")
+        return redirect("/categorias/")
 
-    return render(request, "./subastas_app/agregar_articulo.html")
+    return render(request, "./subastas_app/agregar_articulo.html",{
+        'categorias': categorias_all
+    })
 
 
 def perfil_usuario(request):

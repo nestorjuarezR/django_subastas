@@ -25,18 +25,19 @@
                     </div>
                     <!-- Seleccion de Categoria -->
                     <div class="input-field col s12 m6 l6">
-                        <select class="browser-default" name="categoria">
-                            <option value="" id="genero" disabled selected>Categoria</option>
-                            <option value="Relojes"> Reloj</option>
-                            <option value="fotografia">Fotografia</option>
+                        <select class="browser-default" name="categoria_id">
+                        <option value=""  disabled selected>Categoria</option>
+                        {% for item in categorias %}
+                        <option value="{{ item.id }}" selected>{{ item.nombre }}</option>
+                        {% endfor %}
                         </select>
                     </div>
                     <!-- Ingreso de descripcion -->
                     <div class="row">
                         <div class="input-field  col s12 m6 l12">
                             <i class="material-icons prefix">account_circle</i>
-                            <textarea value="{{ descripcion }}" name="descripcion" id="descripcion" class="materialize-textarea"
-                                data-length="240"></textarea>
+                            <textarea value="{{ descripcion }}" name="descripcion" id="descripcion"
+                                class="materialize-textarea" data-length="240"></textarea>
                             <label for="descripcion">Descripcion</label>
                         </div>
                     </div>
@@ -45,7 +46,7 @@
                         <i class="material-icons prefix">attach_money</i>
                         <input type="number" id="precio_minimo" class="validate" name="precio_minimo"
                             value="{{ precio_minimo }}" required>
-                        <label for="precio_minimo">Precio de apaertura</label>
+                        <label for="precio_minimo">Precio de apertura</label>
                     </div>
                     <!-- Fotografias -->
                     <div class="file-field input-field col l12">
@@ -54,7 +55,8 @@
                             <input type="file" name="imagen">
                         </div>
                         <div class="file-path-wrapper">
-                            <input class="file-path validate" type="text" placeholder="Upload one or more files" name="imagen">
+                            <input class="file-path validate" type="text" placeholder="Upload one or more files"
+                                name="imagen">
                         </div>
                     </div>
 
