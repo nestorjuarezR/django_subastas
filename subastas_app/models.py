@@ -60,7 +60,7 @@ class Articulo(models.Model):
 
 class Subasta(models.Model):
     articulo = models.OneToOneField(Articulo, on_delete=models.CASCADE)
-    user_ganador = models.OneToOneField(User, on_delete=models.CASCADE)
+    user_ganador = models.ForeignKey(User, on_delete=models.CASCADE)
     precio_ganador = models.IntegerField(null=True, blank=True)
 
     def __str__(self):
