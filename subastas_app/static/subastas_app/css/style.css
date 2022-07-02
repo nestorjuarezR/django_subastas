@@ -20,6 +20,10 @@ nav {
   padding-left: 10px;
 }
 
+#division{
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
 
 nav ul li:hover {
   background-color: #7a7171d0;

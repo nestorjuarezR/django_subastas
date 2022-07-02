@@ -74,9 +74,8 @@ def subasta_articulo(request,articulo_id):
     if request.method == "POST":
         ultima_puja = request.POST['precio_ganador']
         #usuario = request.user
-        print(ultima_puja)
-        articulo_subasta.precio_ganador = ultima_puja
-        articulo_subasta.update()
+        articulo_subasta.Precio_ganador = ultima_puja
+        articulo_subasta.update(precio_ganador = ultima_puja)
         
         return redirect(request.META['HTTP_REFERER'])
 
