@@ -9,34 +9,42 @@
             <!-- Inicio del ciclo for para mostar las categorias -->
             <div class="divider"></div>
 
-            
+
             {% for categoria_info in categoria %}
-                
-                
-                {% for articulo_info in  articulos%}
-                        
-                        {% if articulo_info.categoria_id == categoria_info.id %}
-                            <div class="col s12 m6 l4">
-                                <div class="card medium">
-                                    <div class="card-image">
-                                        <img class="responsive-img" id="card-image" src="{{ articulo_info.imagen.url }}">
-                                    </div>
-                                    <div class=" card-content">
-                                        <span class=" card-title">{{ articulo_info.nombre }}</span>
-                                        <p>{{ articulo_info.descripcion }}</p>
-                                    </div>
-                                    <div class="card-action">
-                                        <a href="/subasta/{{ articulo_info.id }}">Entrar</a>
-                                    </div>
-                                </div>
-                            </div> 
-                        {% endif %}
-                {% endfor %}
+
+
+            {% for articulo_info in  articulos%}
+
+            {% if articulo_info.categoria_id == categoria_info.id %}
+            <div class="col s12 m6 l4">
+                <div class="card medium">
+                    <div class="card-image waves-effect waves-block waves-light">
+                        <img class="activator responsive-img" id="card-image" src="{{ articulo_info.imagen.url }}">
+                    </div>
+                    <div class=" card-content">
+                        <span class="card-title activator grey-text text-darken-4"> {{ articulo_info.nombre }} <i
+                                class="material-icons right">keyboard_arrow_up</i></span>
+                        <div class="col l10">
+                            <p class="black-text">Precio de entrada: ${{ articulo_info.precio_minimo }}</p>
+                            <p class="red-text text-darken-2">Ultima puja realizada: $ </p>
+                        </div>
+                    </div>
+                    <div class="card-reveal">
+                        <span class="card-title grey-text text-darken-4"> {{ articulo_info.nombre }} <i
+                                class="material-icons right">close</i></span>
+                        <p> {{ articulo_info.descripcion }} </p>
+                    </div>
+                    <div class="card-action">
+                        <a class="waves-effect waves-light btn" href="/subasta/{{ articulo_info.id }}">Entrar</a>
+                    </div>
+                </div>
+            </div>
+            {% endif %}
             {% endfor %}
+            {% endfor %}
+
         </div>
     </div>
-
-
 
     <!-- Boton para agregar o editar articulos solo si el usuario esta autenticado-->
     {% if user.is_authenticated %}
